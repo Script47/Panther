@@ -28,7 +28,6 @@ if (array_key_exists('char_name', $_POST)) {
             $query->bind_param("ssi", $charname, $avatar, $_SESSION['uid']);
             $query->execute();
             $query->store_result();
-            print_r($query);
             if ($query->affected_rows) {
                 ob_clean();
                 header('Location: home');

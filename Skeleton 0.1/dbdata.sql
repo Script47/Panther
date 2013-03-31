@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `stats` (
   `stat_name` varchar(25) NOT NULL,
   `default_val` varchar(50) NOT NULL,
   `on_char_creator` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1=yes,0=no',
+  `in_gym` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0=no|1=yes',
   PRIMARY KEY (`stat_id`),
   KEY `stat_id` (`stat_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Stores all stats' AUTO_INCREMENT=6 ;
@@ -58,12 +59,12 @@ CREATE TABLE IF NOT EXISTS `stats` (
 -- Dumping data for table `stats`
 --
 
-INSERT INTO `stats` (`stat_id`, `stat_name`, `default_val`, `on_char_creator`) VALUES
-(1, 'hp', '10', 1),
-(2, 'str', '5', 1),
-(3, 'def', '5', 1),
-(4, 'luck', '5', 1),
-(5, 'upgrade_points', '15', 0);
+INSERT INTO `stats` (`stat_id`, `stat_name`, `default_val`, `on_char_creator`, `in_gym`) VALUES
+(1, 'hp', '10', 1, 0),
+(2, 'str', '5', 1, 1),
+(3, 'def', '5', 1, 1),
+(4, 'luck', '5', 1, 0),
+(5, 'upgrade_points', '15', 0, 0);
 
 -- --------------------------------------------------------
 

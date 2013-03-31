@@ -44,7 +44,7 @@ class user_class {
     public function getStatId($name) {
         global $db;
         /*
-         * Gets the name of a stat from `users_stats` and `stats`
+         * Gets the id of a stat from `users_stats` and `stats`
          */
         $name = (string) $name;
         $sid = 0;
@@ -59,8 +59,30 @@ class user_class {
         } else {
             return false;
         }
+        $query->close();
     }
 
+    public function getStatName($id) {
+        global $db;
+        /*
+         * Gets the name of a stat from `users_stats` and `stats`
+         */
+        $id = (int) $id;
+        $sid = 0;
+        $qry = "SELECT `stat_name` FROM `stats` WHERE `stat_id`=$id";
+        $query = $db->prepare($qry);
+        if ($query) {
+            $query->execute();
+            $query->bind_result($sid);
+            $query->fetch();
+            $query->store_result();
+            return $sid;
+        } else {
+            return false;
+        }
+        $query->close();
+    }    
+    
     public function setStat($stat_name, $stat_value) {
         global $db;
         $qry = "UPDATE `users` SET `{$stat_name}`='{$stat_value}' WHERE `id`=?";
@@ -69,6 +91,7 @@ class user_class {
         if ($query) {
             $query->bind_param('i', $this->uid);
             $query->execute();
+            $query_us->store_result();
             if ($query->affected_rows) {
                 return TRUE;
             } else {
@@ -77,11 +100,12 @@ class user_class {
         }
         
         $stat_name = 'stat_'. $stat_name;
-        $q = "UPDATE `users_stats` SET $stat_name=? WHERE `uid`=?";
-        $query_us = $db->prepare($q);;
+        $q = "UPDATE `users_stats` SET $stat_name='{$stat_value}' WHERE `uid`=?";
+        $query_us = $db->prepare($q);
         if ($query_us) {
-            $query_us->bind_param('si', $stat_value, $this->uid);
+            $query_us->bind_param('i', $this->uid);
             $query_us->execute();
+            $query_us->store_result();
             if ($query_us->affected_rows) {
                 return TRUE;
             } else {

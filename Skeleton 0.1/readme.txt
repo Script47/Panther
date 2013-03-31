@@ -26,9 +26,8 @@ Quick Guide
 
 - How to contribute to Panther Skeleton
 * Fork it on GitHub (https://github.com/snikonet/PantherSkeleton)
-* Push the update to your forked repository
-* Send a pull request
-* I'll review, and potentially accept your contribution, depending on if they work or not
+* Push the update to me
+* I'll review&pull it
 
 - How to update stats
 * Adding 10 to users strength
