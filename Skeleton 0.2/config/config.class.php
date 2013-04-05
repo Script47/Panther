@@ -1,7 +1,5 @@
 <?php
 /**
- * This class creates a database connection.
- *
  * @author Harry Denley
  */
 class config {
