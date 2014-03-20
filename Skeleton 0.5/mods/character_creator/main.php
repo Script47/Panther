@@ -16,9 +16,9 @@ if (character_is_set_up($_SESSION['uid'])) {
 if (array_key_exists('char_name', $_POST)) {
 
     $charname = filter_input(INPUT_POST, 'char_name', FILTER_SANITIZE_STRING, 'UTF-8');
-    $avatar = file_exists($_POST['avatar']) && getimagesize($_POST['avatar']) ? $_POST['avatar'] : 'public/avatars/avatar-1.jpg';
+    $avatar = array_key_exists ( 'avatar', $_POST ) && file_exists($_POST['avatar']) && getimagesize($_POST['avatar']) ? $_POST['avatar'] : 'public/avatars/avatar-1.jpg'; //Fix for undefined index "avatar" error.
 
-    if (strlen(trim($charname)) <= 3) {
+    if (strlen(trim($charname)) < 3) { //Fix for the message to be relevant.
         echo '<div class="alert alert-error">Please make your character name more than 2 characters in length</div>';
     } else {
         global $db;

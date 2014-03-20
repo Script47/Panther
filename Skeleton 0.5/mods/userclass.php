@@ -137,4 +137,73 @@ class user_class {
         return FALSE;
     }
 
+    public function setStats ( $setValues ) {
+
+        if ( is_array ( $setValues ) ) {
+            return $this->setMultiple ( 'users_stats', $setValues );
+        }
+
+        return false;
+    }
+
+    public function setInfo ( $setValues ) {
+
+        if ( is_array ( $setValues ) ) {
+            return $this->setMultiple ( 'users', $setValues );
+        }
+
+        return false;
+    }
+
+
+    protected function setMultiple ( $table, $setValues ) {
+        global $db;
+
+        /* Default Variables */
+        $queryFields = '';
+        $queryTypes = '';
+
+        $queryBinds = array();
+        $queryValues = array(); //Work around for reference when passing variables through $setValues.
+
+        foreach ( $setValues as $field => $value ) {
+            $type = gettype ( $value );
+            switch ( $type ) {
+                case 'boolean' : $queryTypes.='b'; break;
+                case 'string' : $queryTypes.='s'; break;
+                case 'integer' : $queryTypes.='i'; break;
+                default: return false;
+            }
+
+            $queryValues[$field] = $value;
+            $queryFields .= $db->real_escape_string ( $field ).' = ?,';
+            $queryBinds[] = &$queryValues[$field];
+        }
+
+        /* Manual addition of the users id. */
+        $queryTypes .= 'i';
+        $queryBinds[] = &$this->uid;
+
+        /* Remove trailing comma on $queryFields */
+        $queryFields = substr_replace ( $queryFields, '', -1 );
+
+        /* Initial update variables. */
+        $affectedRows = 0;
+        $query = 'UPDATE '.$db->real_escape_string ( $table ).' SET '.$queryFields.' WHERE ( uid = ? )';
+
+        /* Update query */
+        if ( $upd = $db->prepare ( $query ) ) {
+            /* Apply bindings to query */
+            call_user_func_array ( array ( $upd, 'bind_param' ), array_merge ( array ( &$queryTypes ), $queryBinds ) );
+            $upd->execute();
+            $affectedRows = $upd->affected_rows;
+            $upd->close();
+        }
+
+        if ( $affectedRows ) 
+            return true;
+
+        return false;
+    }
+
 }
