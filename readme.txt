@@ -8,6 +8,13 @@ with something 'useful' for their text-based game adventure.
 If you'd like to support the development of this, please go here:
 www.sniko.net/page/donate
 
+Installing Panther
+
+* Download the code https://github.com/harrydenley/PantherSkeleton/archive/master.zip
+* Open the .zip and you will see a bunch of different directories, these contain different versions of Panther. Extract the contents of the version you would like to use to your web root.
+* Create a database and import the dbdata.sql file.
+* Open config/config.php file and change database details accordingly.
+* Open your web browser and visit your freshly installed Panther!
 
 Quick Guide
 
