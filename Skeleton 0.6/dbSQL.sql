@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.9
+-- version 4.1.4
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 13, 2013 at 01:34 AM
--- Server version: 5.5.8
--- PHP Version: 5.3.5
+-- Host: 127.0.0.1
+-- Generation Time: Apr 14, 2014 at 05:49 PM
+-- Server version: 5.6.15-log
+-- PHP Version: 5.5.8
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -16,7 +17,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `panther_engine`
+-- Database: `demodb`
 --
 
 -- --------------------------------------------------------
@@ -55,11 +56,6 @@ CREATE TABLE IF NOT EXISTS `items` (
   KEY `category` (`category`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `items`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -72,10 +68,21 @@ CREATE TABLE IF NOT EXISTS `items_categories` (
   PRIMARY KEY (`category_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `items_categories`
+-- Table structure for table `mailbox`
 --
 
+CREATE TABLE IF NOT EXISTS `mailbox` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `SendTo` int(11) NOT NULL,
+  `SentFrom` int(11) NOT NULL,
+  `Subject` varchar(225) NOT NULL,
+  `Message` text NOT NULL,
+  `SentOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -133,9 +140,11 @@ INSERT INTO `stats` (`stat_id`, `stat_name`, `description`, `default_val`, `on_c
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `email` varchar(16) NOT NULL,
-  `password` varchar(16) NOT NULL,
+  `email` varchar(120) NOT NULL,
+  `password` varchar(60) NOT NULL,
   `char_name` varchar(25) NOT NULL DEFAULT '',
+  `money` int(11) NOT NULL DEFAULT '100',
+  `new_mail` int(11) NOT NULL DEFAULT '0',
   `avatar` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='stores core user details' AUTO_INCREMENT=2 ;
@@ -144,8 +153,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `char_name`, `avatar`) VALUES
-(1, '1$AsiRlODyi/2', '1$jZpN/buYGDo', 'admin', 'public/avatars/avatar-3.jpg');
+INSERT INTO `users` (`id`, `email`, `password`, `char_name`, `money`, `new_mail`, `avatar`) VALUES
+(1, '1$AsiRlODyi/2', '1$jZpN/buYGDo', 'admin', 100, 0, 'public/avatars/avatar-3.jpg');
 
 -- --------------------------------------------------------
 
@@ -163,13 +172,6 @@ CREATE TABLE IF NOT EXISTS `users_equip` (
   `boots` mediumint(5) NOT NULL DEFAULT '0',
   KEY `uid` (`uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users_equip`
---
-
-INSERT INTO `users_equip` (`uid`, `head`, `weapon`, `shield`, `torso`, `legs`, `boots`) VALUES
-(1, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -194,3 +196,7 @@ CREATE TABLE IF NOT EXISTS `users_stats` (
 
 INSERT INTO `users_stats` (`uid`, `stat_1`, `stat_2`, `stat_3`, `stat_4`, `stat_5`) VALUES
 (1, '12', '11', '12', '10', '0');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

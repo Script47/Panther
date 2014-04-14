@@ -12,6 +12,8 @@ if(isset($_SESSION['uid']) && isset($_SESSION['loggedin'])) {
     } else {
         echo '<li><a href="mailbox">Mailbox (0)</a></li>';
     }
+    echo '<li><a href="gym">Gym</a></li>';
+    echo '<li><a href="guessthenumber">Guess The Number</a></li>';
     echo '<li><a href="hacks">Hacks</a></li>';
     echo '<li><a href="logout">Logout</a></li>';
 }
