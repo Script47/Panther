@@ -8,7 +8,7 @@ with something 'useful' for their text-based game adventure.
 If you'd like to support the development of this, please go here:
 www.sniko.net/page/donate
 
-Installing Panther
+##### Installing Panther
 
 * Download the code https://github.com/harrydenley/PantherSkeleton/archive/master.zip
 * Open the .zip and you will see a bunch of different directories, these contain different versions of Panther. Extract the contents of the version you would like to use to your web root.
@@ -16,27 +16,31 @@ Installing Panther
 * Open config/config.php file and change database details accordingly.
 * Open your web browser and visit your freshly installed Panther!
 
-Quick Guide
+#### Quick Guide
 
-- How to create a module
+##### How to create a module
+
 * Go to mods/
 * Create a new folder for your module
 * Create the main.php page
 * Go to mods/home
 * Edit mods/home/menu.php
 
-- How to disable a module
+##### How to disable a module
+
 * Go to mods/
 * Find the module to disable
 * Create disabled.panther in the module directory
 * Simply delete the disabled.panther file to enable it again
 
-- How to contribute to Panther Skeleton
+##### How to contribute to Panther Skeleton
+
 * Fork it on GitHub (https://github.com/snikonet/PantherSkeleton)
 * Push the update to me
 * I'll review&pull it
 
-- How to update stats
+##### How to update stats
+
 * Adding 10 to users strength
     $user->setStat($user->getStatId('str'), $user->getStat('str')+10);
 * Subtracting 10 from users strength
