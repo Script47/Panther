@@ -13,7 +13,32 @@ class user_class {
         $level = ($exp < 100) ? 1 : floor($exp / 100);
         return $level;
     }
+    
+    public function getMoney($userID) {
+        global $db;
+        
+        $selectMoney = $db->query("SELECT * FROM `users` WHERE id=$userID");
+        $money = mysqli_fetch_assoc($selectMoney);
+        
+        return $money['money'];
+    }
 
+    public function addMoney($ammountToAdd, $userID) {
+        global $db;
+        
+        $updateUser = $db->prepare("UPDATE `users` SET money=money+$ammountToAdd WHERE id=?");
+        $updateUser->bind_param('i', $userID);
+        $updateUser->execute();
+    }
+    
+    public function minusMoney($ammountToMinus, $userID) {
+        global $db;
+        
+        $updateUser = $db->prepare("UPDATE `users` SET money=money-$ammountToMinus WHERE id=?");
+        $updateUser->bind_param('i', $userID);
+        $updateUser->execute();
+    }
+    
     public function getEquipSlot($slot) {
         global $db;
         $sql = "SELECT $slot FROM users_equip WHERE `uid`=?";

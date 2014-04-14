@@ -31,7 +31,7 @@ if (array_key_exists('stat', $_GET)) {
             $user->setStat($stat_id, $user->getStat($user->getStatName($stat_id))+1);
             $user->setStat($user->getStatId('upgrade_points'), $user->getStat('upgrade_points')-1);
             echo '<div class="alert alert-success">You trained '. $user->getStatName($stat_id) .' successfully!</div>';
-        } else {
+        } else {        
             echo '<div class="alert alert-error">You cannot train this stat!</div>';
         }
         $get_stat->close();

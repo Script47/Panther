@@ -109,7 +109,7 @@ if($isInstalled == TRUE) {
         KEY `stat_id` (`stat_id`)
         ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Stores all stats' AUTO_INCREMENT=6 ;";
 
-        $insertStats = "INSERT INTO `stats` (`stat_id`, `stat_name`, `description`, `default_val`, `on_char_creator`, `in_gym`) VALUES
+        $insertStatsQuery = "INSERT INTO `stats` (`stat_id`, `stat_name`, `description`, `default_val`, `on_char_creator`, `in_gym`) VALUES
         (1, 'HP', 'Your health points.', '10', 1, 1),
         (2, 'backpack', 'The amount of items you can hold', '10', 1, 1),
         (3, 'attack', 'How much you can attack', '5', 1, 1),
@@ -117,9 +117,9 @@ if($isInstalled == TRUE) {
         (5, 'upgrade_points', '', '15', 0, 0);";
 
         $createStatsTable = $db->query($statQuery);
-        $insertStats = $db->query($insertStats);
+        $insertStats = $db->query($insertStatsQuery);
 
-        if($createStatsTable && $insertStats) {
+        if($createStatsTable && $insertStatsQuery) {
             echo '<font color="green">Created Stats table & inserted stats.</font><br/>';
         } else {
             echo '<font color="red">Could not create stats table or insert stats.</font><br/>';
@@ -128,9 +128,11 @@ if($isInstalled == TRUE) {
 
         $createUsersTableQuery = 'CREATE TABLE IF NOT EXISTS `users` (
         `id` mediumint(9) NOT NULL AUTO_INCREMENT,
-        `email` varchar(16) NOT NULL,
-        `password` varchar(16) NOT NULL,
+        `email` varchar(120) NOT NULL,
+        `password` varchar(60)NOT NULL,
         `char_name` varchar(25) NOT NULL DEFAULT "",
+        `money` INT(11) NOT NULL DEFAULT 100,
+        `new_mail` INT(11) NOT NULL DEFAULT 0,
         `avatar` varchar(100) NOT NULL,
         PRIMARY KEY (`id`)
         ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT="stores core user details" AUTO_INCREMENT=2;';
@@ -197,13 +199,32 @@ if($isInstalled == TRUE) {
             exit();
         }
         
+        $createMailboxQuery = "CREATE TABLE IF NOT EXISTS `mailbox` (
+        `ID` int(11) NOT NULL AUTO_INCREMENT,
+        `SendTo` int(11) NOT NULL,
+        `SentFrom` int(11) NOT NULL,
+        `Subject` varchar(225) NOT NULL,
+        `Message` text NOT NULL,
+        `SentOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (`ID`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;";
+        
+        $createMailbox = $db->query($createMailboxQuery);
+        
+        if($createMailbox) {
+            echo '<font color="green">Created table Mailbox.</font><br/>';
+        } else {
+            echo '<font color="red">Could not create table Mailbox.</font><br/>';
+            exit();
+        }
+        
         $isInstalled = TRUE;
 
         if($isInstalled == TRUE) {
             unlink("installer.php");
-            unlink("dbdata.sql");            
-            echo '<font color="green">Game has been correctly installed.</font><br/>';
-            exit(header("Location:2; index"));
+            unlink("dbSQL.sql");            
+            echo '<font color="green">Game has been correctly installed. Go back to index page and create an account to start.</font><br/>';
+            exit();
         } else {
             echo '<font color="red">Something went wrong.</font><br/>';
             exit();

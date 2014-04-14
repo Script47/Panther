@@ -1,4 +1,4 @@
-Panther Skeleton 0.6
+Panther Skeleton 0.1
 * This is free open source code
 * Author www.sniko.net
 
@@ -37,6 +37,8 @@ Quick Guide
 * Setting users strength to 5
     $user->setStat($user->getStatId('str'), 5);
 
+- Updates
+* hacks have been added; just create an account, and you'll see it in the menu.
 
 - Author notes
 Please do not resell panther, as it is intended to be open source.

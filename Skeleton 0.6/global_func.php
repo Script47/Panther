@@ -79,7 +79,7 @@ function encryptpasscode($raw) {
     /*
      * Encrypts passwords/passcodes
      */
-    return hash(sha1,($raw));
+    return hash(sha1, ($raw));
 }
 
 function character_is_set_up($user_id) {
@@ -123,5 +123,13 @@ function current_module($module) {
 }
 function get_current_module() {
     return $_GET['page'];
+}
+
+function successMessage($message) {
+    echo "<div class='alert alert-success'>$message</div>";
+}
+
+function errorMessage($message) {
+    echo "<div class='alert alert-error'>$message</div>";
 }
 ?>

@@ -13,6 +13,7 @@ $upgradeButton = ($user->getStat('upgrade_points') > 0) ? '<a href="gym" class="
     <tr> <th><?php echo $upgradeButton; ?></th> <td><img src='<?php echo $user->getStat('avatar'); ?>' alt='Avatar' width='50px' height='50px' /></td> </tr>
     <tr> <th>Character Name</th> <td><a href="profile"><?php echo $user->getStat('char_name'); ?></a></td> </tr>
     <tr> <th>Level</th> <td><?php echo $user->getLevel(); ?></td> </tr>
+    <tr> <th>Money</th> <td><?php echo money_formatter($user->getMoney($_SESSION['uid'])); ?></td> </tr>
 <?php
 //Get stats
     $sql = "SELECT `stat_name`,`description` FROM `stats` WHERE (`on_char_creator`=1) OR (`in_gym`=1)";
