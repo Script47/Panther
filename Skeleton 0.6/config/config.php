@@ -12,7 +12,7 @@ $config = null;
 $settings['host'] = 'localhost';
 $settings['user'] = 'root';
 $settings['password'] = '';
-$settings['database'] = 'demodb';
+$settings['database'] = '';
 $configuration = new config($settings);
 
 /* Choose the default template */
