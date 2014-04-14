@@ -49,6 +49,7 @@ Quick Guide
  * Released by Script47.
  * Scheduled for official testing :) - sniko.
 
-- Author notes
+#### Author notes
+
 Please do not resell panther, as it is intended to be open source.
 www.sniko.net 
