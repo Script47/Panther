@@ -192,9 +192,11 @@ if($isInstalled == TRUE) {
             exit();
         }
         
-        $isInstalled = FALSE;
+        $isInstalled = TRUE;
 
         if($isInstalled == TRUE) {
+            unlink("installer.php");
+            unlink("dbdata.sql");            
             echo '<font color="green">Game has been correctly installed.</font><br/>';
             exit(header("Location:2; index"));
         } else {
