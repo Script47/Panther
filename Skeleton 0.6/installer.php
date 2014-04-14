@@ -14,6 +14,11 @@ $isInstalled = FALSE;
 if($isInstalled == TRUE) {
     exit("Game has already been installed.".header("Location:2; index"));
 } else {
+    
+    echo '<h3>Panther Installer</h3>';
+    
+    echo "<p>This makes installing a lot easier, simply run the file and follow this instructions. It will be an automated system, and for security reasons the file will then delete itself after installation is done successfully. Don't forget to set up the database connection first with correct credentials otherwise it won't work.</p>"";
+    
     echo '<form method="post">
             <input type="submit" name="installSQL" title="Install Game" value="Install Game">
          </form>';
