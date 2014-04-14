@@ -30,8 +30,8 @@ www.sniko.net/page/donate
 
 * Go to mods/
 * Find the module to disable
-* Create disabled.panther in the module directory
-* Simply delete the disabled.panther file to enable it again
+* Create `disabled.panther` in the module directory
+* Simply delete the `disabled.panther` file to enable it again
 
 ##### How to contribute to Panther Skeleton
 
@@ -42,11 +42,11 @@ www.sniko.net/page/donate
 ##### How to update stats
 
 * Adding 10 to users strength
-    $user->setStat($user->getStatId('str'), $user->getStat('str')+10);
+   * `$user->setStat($user->getStatId('str'), $user->getStat('str')+10);`
 * Subtracting 10 from users strength
-    $user->setStat($user->getStatId('str'), $user->getStat('str')-10);
+   * `$user->setStat($user->getStatId('str'), $user->getStat('str')-10);`
 * Setting users strength to 5
-    $user->setStat($user->getStatId('str'), 5);
+   * `$user->setStat($user->getStatId('str'), 5);`
 
 #### Panther Skeleton 0.6
 
