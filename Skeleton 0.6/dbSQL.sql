@@ -145,6 +145,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `char_name` varchar(25) NOT NULL DEFAULT '',
   `money` int(11) NOT NULL DEFAULT '100',
   `new_mail` int(11) NOT NULL DEFAULT '0',
+  `new_events` INT(11) NOT NULL DEFAULT '0',
   `avatar` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='stores core user details' AUTO_INCREMENT=2 ;
@@ -196,6 +197,19 @@ CREATE TABLE IF NOT EXISTS `users_stats` (
 
 INSERT INTO `users_stats` (`uid`, `stat_1`, `stat_2`, `stat_3`, `stat_4`, `stat_5`) VALUES
 (1, '12', '11', '12', '10', '0');
+
+--
+-- Table structure for table `events`
+--
+
+CREATE TABLE IF NOT EXISTS `events` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `SentFrom` int(11) NOT NULL,
+  `SendTo` int(11) NOT NULL,
+  `Message` varchar(225) NOT NULL,
+  `SentOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
