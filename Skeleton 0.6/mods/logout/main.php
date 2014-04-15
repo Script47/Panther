@@ -1,13 +1,11 @@
 <?php
-/*
- * All sessions are destoryed
- * Including session id
- * Basic logout module
+/**
+ * Logout Module
+ * Developed By: Script47
  */
-foreach($_SESSION as $key => $value) {
-    unset($_SESSION['key']);
-}
 
+session_unset();
+session_destroy();
 ob_end_clean();
-header('Location: index');
+header("Location: index.php");
 exit;

@@ -14,11 +14,6 @@ $isInstalled = FALSE;
 if($isInstalled == TRUE) {
     exit("Game has already been installed.".header("Location:2; index"));
 } else {
-    
-    echo '<h3>Panther Installer</h3>';
-    
-    echo "<p>This makes installing a lot easier, simply run the file and follow this instructions. It will be an automated system, and for security reasons the file will then delete itself after installation is done successfully. Don't forget to set up the database connection first with correct credentials otherwise it won't work.</p>"";
-    
     echo '<form method="post">
             <input type="submit" name="installSQL" title="Install Game" value="Install Game">
          </form>';
@@ -133,6 +128,7 @@ if($isInstalled == TRUE) {
         `char_name` varchar(25) NOT NULL DEFAULT "",
         `money` INT(11) NOT NULL DEFAULT 100,
         `new_mail` INT(11) NOT NULL DEFAULT 0,
+        `new_events` INT(11) NOT NULL DEFAULT 0,
         `avatar` varchar(100) NOT NULL,
         PRIMARY KEY (`id`)
         ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT="stores core user details" AUTO_INCREMENT=2;';
@@ -218,11 +214,29 @@ if($isInstalled == TRUE) {
             exit();
         }
         
+        $createEventsTableQuery = "CREATE TABLE IF NOT EXISTS `events` (
+        `ID` int(11) NOT NULL AUTO_INCREMENT,
+        `SentFrom` int(11) NOT NULL,
+        `SendTo` int(11) NOT NULL,
+        `Message` varchar(225) NOT NULL,
+        `SentOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (`ID`)
+        ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;";
+        
+        $createEventsTable = $db->query($createEventsTableQuery);
+        
+        if($createEventsTable) {
+            echo '<font color="green">Created table Events.</font><br/>';
+        } else {
+            echo '<font color="red">Could not create table Events.</font><br/>';
+            exit();
+        }
+        
         $isInstalled = TRUE;
 
         if($isInstalled == TRUE) {
-            unlink("installer.php");
-            unlink("dbSQL.sql");            
+            //unlink("installer.php");
+            //unlink("dbSQL.sql");            
             echo '<font color="green">Game has been correctly installed. Go back to index page and create an account to start.</font><br/>';
             exit();
         } else {

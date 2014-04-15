@@ -4,11 +4,6 @@
  * Developed By: Script47
  */
 
-function updateNewMail($id) {
-    global $db;
-    return $db->query("UPDATE `users` SET new_mail=new_mail+1 WHERE id=$id");
-}
-
 echo '<center><h3>Mailbox</h3>';
 
 $userID = $_SESSION['uid'];

@@ -12,7 +12,7 @@ $config = null;
 $settings['host'] = 'localhost';
 $settings['user'] = 'root';
 $settings['password'] = '';
-$settings['database'] = '';
+$settings['database'] = 'panther';
 $configuration = new config($settings);
 
 /* Choose the default template */

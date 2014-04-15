@@ -125,11 +125,69 @@ function get_current_module() {
     return $_GET['page'];
 }
 
+/**
+ * Easy way to give success messages.
+ * @param String $message - Default success message.
+ */
+
 function successMessage($message) {
     echo "<div class='alert alert-success'>$message</div>";
 }
 
+/**
+ * Easy way to give error messages.
+ * @param String $message - Default error message.
+ */
+
 function errorMessage($message) {
     echo "<div class='alert alert-error'>$message</div>";
+}
+
+/**
+ * Easy way to update users mail.
+ * @global DBCon $db - DB connection link.
+ * @param INT $id - ID of the user.
+ * @return type
+ */
+
+function updateNewMail($id) {
+    global $db;
+    return $db->query("UPDATE `users` SET new_mail=new_mail+1 WHERE id = $id");
+}
+
+/**
+ * Set all the events to be read from the set users ID.
+ * @global DBCon $db - DB connection link.
+ * @param INT $id - ID of the user.
+ */
+function  updateAllEvents($id) {
+    global $db;
+    $updateNewEvent = $db->prepare("UPDATE `users` SET new_events=0 WHERE id = ?");
+    $updateNewEvent->bind_param('i', $id);
+    $updateNewEvent->execute();
+    $updateNewEvent->close();
+}
+
+/**
+ * Create an event to people and send them easily using this function.
+ * @global DBCon $db - DB connection link.
+ * @param INT $sendTo - ID of the person you send too.
+ * @param INT $sentFrom - ID of the person you're sending it too.
+ * @param String VarChar(225) $message - Message to go with the event.
+ */
+function createNewEvent($sentFrom, $sendTo, $message) {
+    global $db;
+    $createEvent = $db->prepare("INSERT INTO `events` (sentFrom, sendTo, Message) VALUES (?, ?, ?)");
+    $createEvent->bind_param('iis', $sentFrom, $sendTo, $message);
+    
+    if($createEvent->execute()) {
+        $updateNewEvent = $db->prepare("UPDATE `users` SET new_events=new_events+1 WHERE id = ?");
+        $updateNewEvent->bind_param('i', $sendTo);
+        $updateNewEvent->execute();
+        $updateNewEvent->close();
+    } else if(!$createEvent->execute()) {
+        return false;
+    }
+    $createEvent->close();
 }
 ?>
