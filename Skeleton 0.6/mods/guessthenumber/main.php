@@ -38,7 +38,7 @@ if(isset($_POST['play'])) {
             successMessage("You got it! You won ".money_formatter($randomNumber)."");
         } else if($guess != $randomNumber) {
             $user->minusMoney($randomNumber, $_SESSION['uid']);
-            errorMessage("Sorry, you guess wrong! You lost ".money_formatter($randomNumber).".");
+            errorMessage("Sorry, you guessed wrong! You lost ".money_formatter($randomNumber).".");
         }
     }
 }
