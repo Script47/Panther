@@ -12,7 +12,7 @@ www.sniko.net/page/donate
 Quick Guide
 
 - **How to create a module**
-* Go to mods/
+ * Go to mods/
  * Create a new folder for your module
  * Create the main.php page
  * Go to mods/home
@@ -41,5 +41,6 @@ Quick Guide
  * Hacks have been added; just create an account, and you'll see it in the menu.
 
 - **Author notes**
+
 Please do not resell panther, as it is intended to be open source.
 www.sniko.net 
