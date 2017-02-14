@@ -3,8 +3,7 @@ Panther Engine
 * This is free open source code game engine.
 * Author Script47
 
-Panther is a lightweight game 'engine', to help programmers start
-with something 'useful' for their text-based game adventure.
+Panther is a lightweight game 'engine', to help programmers start with something 'useful' for their text-based game adventure.
 
 Panther Skeleton
 -
