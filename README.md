@@ -1,4 +1,4 @@
-#### Old + Outdated - Proceed at your own risk!
+#### Old & Outdated - Proceed at your own risk!
 -
 
 #### Panther Skeleton 0.6
