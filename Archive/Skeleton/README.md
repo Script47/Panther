@@ -1,4 +1,4 @@
-#### Panther Skeleton 0.5
+#### Panther Skeleton 0.6
 * This is free open source code
 * Author www.sniko.net
 
