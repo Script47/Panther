@@ -1,13 +1,10 @@
-Panther Skeleton 0.6
-* This is free open source code
-* Author www.sniko.net
+Panther Skeleton 1.0
+-
 
-Panther is a lightweight game 'engine', to help programmers start
+Panther is a lightweight game 'engine'(read: skeleton), to help programmers start
 with something 'useful' for their text-based game adventure.
 
-If you'd like to support the development of this, please go here:
-www.sniko.net/page/donate
-
+DO NOT USE THIS UNLESS TOLD OTHERWISE.
 
 Quick Guide
 
