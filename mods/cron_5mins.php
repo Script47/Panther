@@ -1,7 +1,10 @@
 <?php
 
-if (cron_is_ready('cron_5mins.php', 300)) {
+if (cron_is_ready('cron_5mins.php', 1)) {
     //Put cron stuff here.
+
+    $user->setStat($user->getStatId('upgrade_points'), $user->getStat('upgrade_points')+10);
+
     update();
 }
 

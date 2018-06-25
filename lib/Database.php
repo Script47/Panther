@@ -20,10 +20,10 @@ class Database
                 PDO::ATTR_EMULATE_PREPARES => FALSE
             ];
 
-            $dsn = 'mysql:host=' . DB_HOST . ';port=' . DB_PORT . ';dbname=' . DB_NAME . ';charset=' . DB_CHAR;
+            $dsn = 'mysql:host=' . DB_HOST . ';port=' . DB_PORT . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET;
 
             try {
-                self::$instance = new PDO($dsn, DB_USER, DB_PASS, $opt);
+                self::$instance = new PDO($dsn, DB_USERNAME, DB_PASSWORD, $opt);
             } catch (PDOException $ex) {
                 exit($ex->getMessage());
             }

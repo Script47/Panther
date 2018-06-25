@@ -5,7 +5,7 @@ function cron_is_ready($file, $time) {
    * Check to see if the cron is ready to be run
    */
     global $db;
-    $get = "SELECT `file` FROM `crons` WHERE `file`='". $file ."' AND `last_update` >= (unix_timestamp()+$time)";
+    $get = "SELECT `file`, `last_update` FROM `crons` WHERE `file` = '" . $file . "' AND (unix_timestamp() - ( `last_update` + 100 ) )";
     $get = $db->prepare($get);
     if ($get) {
         $get->execute();
@@ -14,6 +14,8 @@ function cron_is_ready($file, $time) {
             return true;
         }
     }
+
+    return false;
 }
 
 function toFriendlyTime($var) {
