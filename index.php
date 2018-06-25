@@ -25,6 +25,7 @@ $temp['content'] = '';
 $temp['top_right'] = '';
 $temp['menu'] = '';
 
+
 $template = new Template('templates/' . $config('template') . '/'. (isset($_SESSION['uid']) ? 'main.php' : 'outgame.php') );
 
 $template->set('title', $config('site_title'));

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2018 at 09:02 PM
+-- Generation Time: Jun 25, 2018 at 10:46 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -40,7 +40,7 @@ CREATE TABLE `cron` (
 --
 
 INSERT INTO `cron` (`file`, `every`, `next_execution`, `created`) VALUES
-('cron-1-second', 1, 1529952022, '2018-06-25 18:11:58');
+('cron-1-second', 1, 1529959173, '2018-06-25 18:11:58');
 
 -- --------------------------------------------------------
 
@@ -161,6 +161,20 @@ INSERT INTO `stats` (`stat_id`, `stat_name`, `description`, `default_val`, `on_c
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `password` varchar(256) NOT NULL,
+  `active` datetime NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -273,6 +287,12 @@ ALTER TABLE `stats`
   ADD KEY `stat_id` (`stat_id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -318,6 +338,12 @@ ALTER TABLE `mailbox`
 --
 ALTER TABLE `stats`
   MODIFY `stat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

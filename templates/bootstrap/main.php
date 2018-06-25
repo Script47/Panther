@@ -8,7 +8,7 @@
         <meta name="author" content="">
 
         <!-- Le styles -->
-        <link href="templates/default/assets/css/bootstrap.css" rel="stylesheet">
+        <link href="templates/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
         <style type="text/css">
             body {
                 padding-top: 20px;
@@ -46,7 +46,6 @@
                 margin-top: 28px;
             }
         </style>
-        <link href="templates/default/assets/css/bootstrap-responsive.css" rel="stylesheet">
 
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -54,7 +53,7 @@
         <![endif]-->
 
         <!-- Fav icons -->
-        <link rel="shortcut icon" href="templates/default/assets/ico/favicon.png">
+        <link rel="shortcut icon" href="templates/bootstrap/assets/ico/favicon.png">
     </head>
 
     <body>
@@ -91,20 +90,9 @@
         <!-- Le javascript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="templates/default/assets/js/jquery.js"></script>
-        <script src="templates/default/assets/js/bootstrap-transition.js"></script>
-        <script src="templates/default/assets/js/bootstrap-alert.js"></script>
-        <script src="templates/default/assets/js/bootstrap-modal.js"></script>
-        <script src="templates/default/assets/js/bootstrap-dropdown.js"></script>
-        <script src="templates/default/assets/js/bootstrap-scrollspy.js"></script>
-        <script src="templates/default/assets/js/bootstrap-tab.js"></script>
-        <script src="templates/default/assets/js/bootstrap-tooltip.js"></script>
-        <script src="templates/default/assets/js/bootstrap-popover.js"></script>
-        <script src="templates/default/assets/js/bootstrap-button.js"></script>
-        <script src="templates/default/assets/js/bootstrap-collapse.js"></script>
-        <script src="templates/default/assets/js/bootstrap-carousel.js"></script>
-        <script src="templates/default/assets/js/bootstrap-typeahead.js"></script>
-
+        <script src="templates/bootstrap/assets/js/jquery.js"></script>
+        <script src="templates/bootstrap/assets/js/popper.js"></script>
+        <script src="templates/bootstrap/assets/js/bootstrap.js"></script>
     </body>
 </html>
 

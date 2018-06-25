@@ -16,7 +16,7 @@ $settings['database'] = 'panther';
 $configuration = new config($settings);
 
 /* Choose the default template */
-$settings['template'] = 'default';
+$settings['template'] = 'bootstrap';
 $configuration->set('template', $settings['template']);
 
 /* Create the site/project title */
